@@ -9,56 +9,67 @@ const blogRoutes = require('./routes/addBlog')
 const userRoutes = require('./routes/userRoute')
 const categoryRoutes = require('./routes/addCategory')
 
+//Set the credentials of mongodb database
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://ranaka:eKc3b9iA4Iid0WiA7GxxigYK@15.206.7.200:28017/ranaka?authSource=admin&readPreference=primary&ssl=false')
-.then(() => {
-    console.log('Database connection successfully')
-}) 
-.catch((err)=>{
-    console.log(err)
-})
+    .then(() => {
+        console.log('Database connection successfully')
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 
+//use the middlwere for image insert
 app.use(fileupload({
-    useTempFiles:true
+    useTempFiles: true
 }))
 
-app.use(bodyParser.urlencoded({extended: false}))
+//use the bodyparser for seding the data
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use((req,res,next) => {
-    res.header('Access-Control-Allow-Origin','*')
-    res.header('Access-Control-Allow-Headers','Origin , X-Reuested-With, Content-TypeError, Authorization')
-    if(req.method === 'OPTIONS'){
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin , X-Reuested-With, Content-TypeError, Authorization')
+    if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
         return res.status(200).json({})
     }
     next()
 })
 
-app.set('view engine','ejs')
-app.set('views','views');
+//set the view engine
+app.set('view engine', 'ejs')
+app.set('views', 'views');
+
+//use the static files
 app.use('/static', express.static(path.join(__dirname, 'public/styles')))
-app.use('/Blog',blogRoutes)
+
+//set the endpoint of page
+app.use('/Blog', blogRoutes)
 app.use('/login', userRoutes)
 app.use('/category', categoryRoutes)
 
-app.use('/loginTemplate',express.static(path.join(__dirname, 'loginTemplate')));
-app.use('/Admin',express.static(path.join(__dirname, 'Admin')));
+//use the external template 
+app.use('/loginTemplate', express.static(path.join(__dirname, 'loginTemplate')));
+app.use('/Admin', express.static(path.join(__dirname, 'Admin')));
 
-
-
-app.listen(1200, (req,res,next) => {
+//this app listening on port 1200
+app.listen(1200, (req, res, next) => {
     console.log("server running on port 1200")
 })
 
-app.get('/',(req,res,next) => {
-   res.render('index.ejs')
+//get the index page from view
+app.get('/', (req, res, next) => {
+    res.render('index.ejs')
 })
 
-app.get('/category/ca', (req,res) => {
+//get the category page from view
+app.get('/category/ca', (req, res) => {
     res.render('addCategory')
 })
 
-app.get('/Blog/addBlog',(req,res) => {
+//get the blog page from view
+app.get('/Blog/addBlog', (req, res) => {
     res.render('addBlog')
 })

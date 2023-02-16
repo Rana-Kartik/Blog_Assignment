@@ -1,5 +1,6 @@
 const userModel = require('../models/user')
 
+//create the method for check the credentials
 exports.login = (req, res) => {
 
     userModel.findOne().then(data => {

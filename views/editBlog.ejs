@@ -1,53 +1,24 @@
-<%- include('includes/head.ejs') %>
-<body>
-  <%- include('includes/nav.ejs') %>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <form method="post" action="/Blog/addBlog" enctype="multipart/form-data">
-    <div class="mb-3">
-      <label for="formGroupExampleInput" class="form-label">Blog Name</label>
-      <input type="text" class="form-control" name="Name" id="formGroupExampleInput" placeholder="Enter the Blog name"
-        required>
-    </div>
-    <div class="mb-3">
-      <label for="formGroupExampleInput2" class="form-label">Blog Title</label>
-      <input type="text" class="form-control" name="Title" id="formGroupExampleInput2"
-        placeholder="Enter the Blog title" required>
-    </div>
-    <div>
-      <select class="form-select" name="Category" aria-label="Default select example" required>
-        <option selected>Open this select menu</option>
-        <option value="Electronic">Electronic</option>
-        <option value="Grossery">Grossery</option>
-        <option value="Food">Food</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="formGroupExampleInput2" class="form-label">Description</label>
-      <input type="text" class="form-control" name="Description" id="formGroupExampleInput2"
-        placeholder="Enter the Blog Description" required>
-    </div>
-    <div>
-      <label for="formGroupExampleInput2" class="form-label">PublishDate</label>
-      <input type="date" class="form-control" name="PublishDate" id="formGroupExampleInput2" required>
-    </div>
-    <div>
-      <label for="image1" class="form-label">SelectBlogImage</label>
-      <input type="file" name="Image" id="image1" required>
-    </div>
-    <div>
-      <input type="submit" value="Update">
-    </div>
-  </form>
-</body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <form>
+        <label>username</label>
+    </form>
+  </body>
 </html>

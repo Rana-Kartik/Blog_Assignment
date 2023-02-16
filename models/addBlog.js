@@ -1,24 +1,24 @@
 const { default: mongoose } = require('mongoose')
-//const mongoose = require('mongoose')
 
+//create the blog table 
 const blogSchema = mongoose.Schema({
-    _id : mongoose.Schema.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     Name: {
-         type: String, require: true
+        type: String, require: true
     },
     Title: {
         type: String, require: true
     },
     Category: {
-        type: String, require : true
+        type: String, require: true
     },
     Description: {
-        type : String, require : true
+        type: String, require: true
     },
-    PublishDate : {
-        type: String , require: true
+    PublishDate: {
+        type: String, require: true
     },
-    Image : {
+    Image: {
         type: String, require: true
     }
 })
