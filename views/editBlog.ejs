@@ -1,21 +1,8 @@
 <%- include('includes/head.ejs') %>
-<script>
-  function test(){
-    alert('you have to canceled')
-  document.getElementById('formGroupExampleInput').value = ""
-  document.getElementById('formGroupExampleInput2').value = ""
-  document.getElementById('category').value = ""
-  document.getElementById('formGroupExampleInput3').value = ""
-  document.getElementById('formGroupExampleInput4').value = ""
-  document.getElementById('image1').value = ""
-  }
-  
-</script>
 <body>
   <%- include('includes/nav.ejs') %>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
- 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -38,7 +25,7 @@
         placeholder="Enter the Blog title" required>
     </div>
     <div>
-      <select class="form-select" name="Category" aria-label="Default select example" id="category" required>
+      <select class="form-select" name="Category" aria-label="Default select example" required>
         <option selected>Open this select menu</option>
         <option value="Electronic">Electronic</option>
         <option value="Grossery">Grossery</option>
@@ -46,21 +33,20 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for="formGroupExampleInput3" class="form-label">Description</label>
-      <input type="text" class="form-control" name="Description" id="formGroupExampleInput3"
+      <label for="formGroupExampleInput2" class="form-label">Description</label>
+      <input type="text" class="form-control" name="Description" id="formGroupExampleInput2"
         placeholder="Enter the Blog Description" required>
     </div>
     <div>
-      <label for="formGroupExampleInput4" class="form-label">PublishDate</label>
-      <input type="date" class="form-control" name="PublishDate" id="formGroupExampleInput4" required>
+      <label for="formGroupExampleInput2" class="form-label">PublishDate</label>
+      <input type="date" class="form-control" name="PublishDate" id="formGroupExampleInput2" required>
     </div>
     <div>
       <label for="image1" class="form-label">SelectBlogImage</label>
       <input type="file" name="Image" id="image1" required>
     </div>
     <div>
-      <input type="submit" value="Save">
-      <input type="button" value="Cancel" id="cancel" onclick="test()">
+      <input type="submit" value="Update">
     </div>
   </form>
 </body>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Blog Details</title>
+    <title>Category Details</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,31 +30,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <div>
-        <h2>Blog Details</h2>
+        <h2>Category Details</h2>
         <% if(docs.length) { %>
             <div>
                 <center>
                 <table border="2" id="table">
                     <thead>
-                        <th>BlogName</th>
-                        <th>BlogTitle</th>
-                        <th>BlogCategory</th>
-                        <th>Description</th>
-                        <th>PublishDate</th>
-                        <!-- <th>Image</th> -->
+                        <th>CategoryName</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </thead>
                     <% for(let tt of docs) { %>
                         <tr>
                            
-                            <td><%= tt.Name %></td>
-                            <td><%= tt.Title %></td>
-                            <td><%= tt.Category %></td>
-                            <td><%= tt.Description %></td>
-                            <td><%= tt.PublishDate %></td>
-                            <!-- <td><%= tt.Image %></td> -->
-                            
+                            <td><%= tt.CategoryName %></td> 
                             <td><a href="/courses/edit/<%= tt.id%>" class="btn btn-primary">
                                 Edit</a></td>
                                 <td> <a href="/courses/delete/<%= tt.id%>" class="btn btn-success">
@@ -64,7 +53,7 @@
                 </table>
             </center>
                 <% } else { %>
-                    <div> No course available </div>
+                    <div> No Category available </div>
                     <% } %>
             </div>
     </div>

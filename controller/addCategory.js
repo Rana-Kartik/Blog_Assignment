@@ -1,33 +1,17 @@
-const AddBlog = require('../models/addBlog')
+const AddCategory = require('../models/addCategory')
 const mongoose = require('mongoose')
-const cloudinary = require('cloudinary').v2
 
-cloudinary.config({ 
-    cloud_name: 'drwgcsxii', 
-    api_key: '228384945176164', 
-    api_secret: 'mwc99tncI24OoVV2elz1lrt_HWg',
-    secure: true
-  });
-  
 
-exports.create = (req,res) => {
-    console.log(req.body)
-    const file = req.files.Image
-    cloudinary.uploader.upload(file.tempFilePath, (err,result) => {
-        console.log(result)
-        const addblog = new AddBlog({
+exports.add = (req,res) => {
+        console.log(req.body)
+        const addcategory = new AddCategory({
             _id: new mongoose.Types.ObjectId(),
-            Name : req.body.Name,
-            Title : req.body.Title,
-            Category : req.body.Category,
-            Description : req.body.Description,
-            PublishDate : req.body.PublishDate,
-            Image: result.url
+            CategoryName : req.body.CategoryName,
         })
-        addblog.save()
+        addcategory.save()
         .then(result => {
             console.log(result)
-            res.render('addBlog')
+            res.render('addCategory')
         })
         .catch(err => {
             console.log(err)
@@ -35,12 +19,11 @@ exports.create = (req,res) => {
                 error:err
             })
         })
-    })
 }
 
-exports.allBlog = (req,res,next) => {
-    AddBlog.find()
-    .select('Name Title Category Description PublishDate Image _id')
+exports.all= (req,res,next) => {
+    AddCategory.find()
+    .select('CategoryName  _id')
     .exec()
     .then(docs => {
     //    res.status(200).json({
@@ -58,7 +41,7 @@ exports.allBlog = (req,res,next) => {
                
     //         })
     //     })
-        res.render('allBlog', {docs:docs})
+        res.render('allCategory', {docs:docs})
     })
     .catch(err => {
        res.status(500).json({

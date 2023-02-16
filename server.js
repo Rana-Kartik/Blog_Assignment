@@ -7,6 +7,7 @@ const fileupload = require('express-fileupload')
 
 const blogRoutes = require('./routes/addBlog')
 const userRoutes = require('./routes/userRoute')
+const categoryRoutes = require('./routes/addCategory')
 
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://ranaka:eKc3b9iA4Iid0WiA7GxxigYK@15.206.7.200:28017/ranaka?authSource=admin&readPreference=primary&ssl=false')
@@ -36,11 +37,15 @@ app.use((req,res,next) => {
 
 app.set('view engine','ejs')
 app.set('views','views');
-app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/static', express.static(path.join(__dirname, 'public/styles')))
 app.use('/Blog',blogRoutes)
 app.use('/login', userRoutes)
+app.use('/category', categoryRoutes)
 
 app.use('/loginTemplate',express.static(path.join(__dirname, 'loginTemplate')));
+app.use('/Admin',express.static(path.join(__dirname, 'Admin')));
+
+
 
 app.listen(1200, (req,res,next) => {
     console.log("server running on port 1200")
@@ -48,6 +53,10 @@ app.listen(1200, (req,res,next) => {
 
 app.get('/',(req,res,next) => {
    res.render('index.ejs')
+})
+
+app.get('/category/ca', (req,res) => {
+    res.render('addCategory')
 })
 
 app.get('/Blog/addBlog',(req,res) => {
