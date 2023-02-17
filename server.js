@@ -69,6 +69,10 @@ app.get('/category/ca', (req, res) => {
     res.render('addCategory')
 })
 
+app.get('/adminhome',(req,res) => {
+    res.render('Adminindex')
+})
+
 //get the blog page from view
 app.get('/Blog/addBlog', (req, res) => {
     res.render('addBlog')

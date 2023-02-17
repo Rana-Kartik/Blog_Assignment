@@ -10,6 +10,7 @@ router.post('/addBlog', blogController.create)
 router.get('/allBlog', blogController.allBlog)
 router.get('/delete/:bid', blogController.del)
 router.get('/edit/:eid', blogController.edit)
+router.post('/edit/:blogid', blogController.editblog)
 
 
 module.exports = router

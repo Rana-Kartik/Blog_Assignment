@@ -46,21 +46,6 @@ exports.allBlog = (req, res, next) => {
         .select('Name Title Category Description PublishDate Image _id')
         .exec()
         .then(docs => {
-            //    res.status(200).json({
-            //        count : docs.length,
-            //        blogs : docs.map(doc => {
-            //            return {
-            //                _id : doc._id,
-            //                Name : doc.Name,
-            //                Title : doc.Title,
-            //                Category : doc.Category,
-            //                Description: doc.Description,
-            //                PublishDate: doc.PublishDate,
-            //                Image : doc.Image
-            //            }
-
-            //         })
-            //     })
             res.render('allBlog', { docs: docs })
         })
         .catch(err => {
@@ -97,4 +82,22 @@ exports.edit = (req, res) => {
                 message: 'post is not Edited'
             })
         })
+}
+
+
+exports.editblog = (req,res) =>{
+    const id = { eid: req.params.blogid };
+    const update = { BlogName: req.body.Name,
+                     BlogTitle : req.body.Title,
+                     BlogCategory : req.body.Category,
+                     Description: req.body.Description,
+                     PublishDate: req.body.PublishDate,
+                     Image : req.body.Image
+
+    };
+    
+    AddBlog.findOneAndUpdate(id, update)
+    .catch(err => {
+        console.log(err)
+    })
 }
