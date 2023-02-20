@@ -43,23 +43,13 @@ exports.useredit = (req, res, next) => {
 }
 
 exports.search = async(req,res,next) => {
-    const searchTitle = req.query.title
+    const searchTitle = req.body.title
     console.log(searchTitle)
-     let data = await userBlog.find({
-        "$or":[
-            {title:{$regex:searchTitle}}
-        ]
+     await userBlog.find()
+      .select()
+      .where({Title: searchTitle})
+      .exec()
+     .then(result => {
+        console.log(result)
      })
-     console.log(data)
-     //await userBlog.find({where : {title :searchTitle}})
-    //  .select('Name')
-    //  .exec()
-    //  .then(result => {
-    //     console.log(result)
-    //  })
-    //  .catch(err => {
-    //     res.status(500).json({
-    //         error : err
-    //     })
-    //  })
 }
