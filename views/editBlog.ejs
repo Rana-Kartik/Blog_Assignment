@@ -1,7 +1,17 @@
 <%- include('includes/head.ejs') %>
   
 <!-- Creating the Blog Form for inserting the blog -->
-  <body>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+  <body style="background-color: blanchedalmond;">
     <%- include('includes/nav.ejs') %>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -15,42 +25,34 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+ 
       <form method="post" action="/Blog/edit/<%= Course.id %>" enctype="multipart/form-data">
-        <div class="mb-3">
+        <div class="blog">
+        <div class="edit-blog-name">
           <label for="formGroupExampleInput" class="form-label">Blog Name</label>
-          <input type="text" class="form-control" name="Name"  id="formGroupExampleInput" value="<%= edit ? Course.BlogName : '' %>"
+          <input type="text" class="form-control" name="Name"  id="formGroupExampleInput" value="<%= edit ? Course.Name : '' %>"
             placeholder="Enter the Blog name" >
         </div>
-        <div class="mb-3">
+        <div class="edit-blog-title">
           <label for="formGroupExampleInput2" class="form-label">Blog Title</label>
-          <input type="text" class="form-control" name="Title" id="formGroupExampleInput2"
+          <input type="text" class="form-control" name="Title" id="formGroupExampleInput2" value="<%= edit ? Course.Title : '' %>"
             placeholder="Enter the Blog title" >
         </div>
-        <div>
-          <select class="form-select" name="Category" aria-label="Default select example" id="category" >
-            <option selected>Open this select menu</option>
-            <option value="Electronic">Electronic</option>
+        <div> 
+          <select class="edit-blog-category" name="Category" aria-label="Default select example" id="category" >
+            <option selected>Select Category</option>
+            <option value="Electronic" selected>Electronic</option>
             <option value="Grossery">Grossery</option>
             <option value="Food">Food</option>
           </select>
         </div>
-        <div class="mb-3">
-          <label for="formGroupExampleInput3" class="form-label">Description</label>
-          <input type="text" class="form-control" name="Description" id="formGroupExampleInput3"
-            placeholder="Enter the Blog Description" >
-        </div>
-        <div>
-          <label for="formGroupExampleInput4" class="form-label">PublishDate</label>
-          <input type="date" class="form-control" name="PublishDate" id="formGroupExampleInput4" >
-        </div>
-        <div>
-          <label for="image1" class="form-label">SelectBlogImage</label>
-          <input type="file" name="Image" id="image1" >
+        <div class="edit-blog-description">
+          <textarea id="mytextarea" name="Description" value="<%= edit ? Course.Description : '' %>">Hello, World!</textarea>
         </div>
         <div>
           <input type="submit" value="Update">
         </div>
+      </div>
       </form>
   </body>
 

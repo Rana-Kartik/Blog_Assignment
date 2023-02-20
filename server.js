@@ -43,7 +43,7 @@ app.set('view engine', 'ejs')
 app.set('views', 'views');
 
 //use the static files
-app.use('/static', express.static(path.join(__dirname, 'public/styles')))
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 //set the endpoint of page
 app.use('/Blog', blogRoutes)
@@ -53,6 +53,7 @@ app.use('/category', categoryRoutes)
 //use the external template 
 app.use('/loginTemplate', express.static(path.join(__dirname, 'loginTemplate')));
 app.use('/Admin', express.static(path.join(__dirname, 'Admin')));
+app.use('/user', express.static(path.join(__dirname, 'user')));
 
 //this app listening on port 1200
 app.listen(1200, (req, res, next) => {

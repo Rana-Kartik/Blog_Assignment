@@ -1,8 +1,9 @@
-.course{
+.blog{
     border: 1px solid #aaa;
     padding: 20px;
     box-shadow: 1px 1px 1px 1px #eee;
     margin-bottom: 30px;
+    margin-right: 10px;
 }
 
 .add-course-title, .home-course-title, .edit-course-title, .error-page-title{
@@ -22,12 +23,12 @@
 
 }
 
-.add-course-name, .edit-course-name{
+.add-blog-name, .edit-blog-name{
     margin-top: 40px;
 
 }
 
-.add-course-duration, .edit-course-duration{
+.add-blog-title,.add-blog-category, .add-blog-description, .add-blog-date, .add-blog-image, .edit-blog-title, .edit-blog-category, .edit-blog-description{
     margin-top: 20px;
    
 }
@@ -37,10 +38,9 @@
 
 }
 
-#btn-add, #btn-edit{
+.btn-add, .btn-edit{
     margin-top: 40px;
- 
-
+    color: cadetblue;
 }
 
 

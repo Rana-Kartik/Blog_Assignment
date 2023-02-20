@@ -6,11 +6,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script>
-        function test() {
-            alert('You have to deleted')
-        }
-    </script>
     <style>
         #table {
             background-color: lightblue;
@@ -33,8 +28,7 @@
 
 <!-- get the data in the database and showing in the table grid-->
 
-<body style="background-color: rgb(238, 226, 222);">
-    <%- include('includes/nav.ejs') %>
+<body>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -48,47 +42,27 @@
             crossorigin="anonymous"></script>
         <div>
             <h2>Blog Details</h2>
-            <% if(docs.length) { %>
                 <div>
                     <center>
                         <table border="2" id="table">
                             <thead>
-                                <th>BlogName</th>
                                 <th>BlogTitle</th>
                                 <th>BlogCategory</th>
                                 <th>Description</th>
-                                <!-- <th>PublishDate</th> -->
-                                <!-- <th>Image</th> -->
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </thead>
-                            <% for(let tt of docs) { %>
                                 <tr>
-
                                     <td>
-                                        <%= tt.Name %>
+                                        <%= result.Title %>
                                     </td>
                                     <td>
-                                        <%= tt.Title %>
+                                        <%= result.Category %>
                                     </td>
                                     <td>
-                                        <%= tt.Category %>
+                                        <%= result.Description %>
                                     </td>
-                                    <td>
-                                        <%= tt.Description %>
-                                    </td>
-
-                                    <td><a href="/Blog/edit/<%= tt.id%>" class="btn btn-primary">
-                                            Edit</a></td>
-                                    <td> <a href="/Blog/delete/<%= tt.id%>" class="btn btn-success">
-                                            Delete</a></td>
                                 </tr>
-                                <% } %>
                         </table>
                     </center>
-                    <% } else { %>
-                        <div> No Blog available </div>
-                    <% } %>
                
         </div>
 </body>

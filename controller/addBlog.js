@@ -43,9 +43,10 @@ exports.create = (req, res) => {
 //creating the method of fetching data 
 exports.allBlog = (req, res, next) => {
     AddBlog.find()
-        .select('Name Title Category Description PublishDate Image _id')
+        .select()
         .exec()
         .then(docs => {
+            console.log(docs);
             res.render('allBlog', { docs: docs })
         })
         .catch(err => {
@@ -68,7 +69,7 @@ exports.del = (req, res) => {
 exports.edit = (req, res) => {
     const editid = req.params.eid
 
-    AddBlogs.findById(editid)
+    AddBlogs.findById({_id : editid})
         .then((Course) => {
             const viewsData = {
                 edit: true,
@@ -87,15 +88,14 @@ exports.edit = (req, res) => {
 
 exports.editblog = (req,res) =>{
     const id = { eid: req.params.blogid };
-    const update = { BlogName: req.body.Name,
-                     BlogTitle : req.body.Title,
-                     BlogCategory : req.body.Category,
+    const update = { Name: req.body.Name,
+                     Title : req.body.Title,
+                     Category : req.body.Category,
                      Description: req.body.Description,
-                     PublishDate: req.body.PublishDate,
-                     Image : req.body.Image
+                     
 
     };
-    
+    console.log(update)
     AddBlog.findOneAndUpdate(id, update)
     .catch(err => {
         console.log(err)

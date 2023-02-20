@@ -12,12 +12,23 @@
 
   </script>
 
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+
+
 <!-- Creating the Blog Form for inserting the blog -->
-  <body>
+  <body style="background-color:aqua ;">
     <%- include('includes/nav.ejs') %>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
+      <h1>Blog Adding Page</h1>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -29,41 +40,44 @@
         crossorigin="anonymous"></script>
 
       <form method="post" action="/Blog/addBlog" enctype="multipart/form-data">
-        <div class="mb-3">
+        <div class="blog">
+        <div class="add-blog-name">
           <label for="formGroupExampleInput" class="form-label">Blog Name</label>
           <input type="text" class="form-control" name="Name" id="formGroupExampleInput"
             placeholder="Enter the Blog name" required>
         </div>
-        <div class="mb-3">
+        <div class="add-blog-title">
           <label for="formGroupExampleInput2" class="form-label">Blog Title</label>
           <input type="text" class="form-control" name="Title" id="formGroupExampleInput2"
             placeholder="Enter the Blog title" required>
         </div>
-        <div>
+        <div class="add-blog-category">
           <select class="form-select" name="Category" aria-label="Default select example" id="category" required>
-            <option selected>Open this select menu</option>
-            <option value="Electronic">Electronic</option>
+            <option selected>Select Category</option>
+            <option value="Electronic" selected>Electronic</option>
             <option value="Grossery">Grossery</option>
             <option value="Food">Food</option>
           </select>
         </div>
-        <div class="mb-3">
-          <label for="formGroupExampleInput3" class="form-label">Description</label>
-          <input type="text" class="form-control" name="Description" id="formGroupExampleInput3"
-            placeholder="Enter the Blog Description" required>
+        <div class="add-blog-description">
+            <textarea id="mytextarea" name="Description">Hello, World!</textarea>
+            
         </div>
-        <div>
+        <div class="add-blog-date">
           <label for="formGroupExampleInput4" class="form-label">PublishDate</label>
           <input type="date" class="form-control" name="PublishDate" id="formGroupExampleInput4" required>
         </div>
-        <div>
+        <div class="add-blog-image">
           <label for="image1" class="form-label">SelectBlogImage</label>
           <input type="file" name="Image" id="image1" required>
         </div>
+        <br>
+        <br>
         <div>
-          <input type="submit" value="Save">
-          <input type="button" value="Cancel" id="cancel" onclick="test()">
+          <input type="submit" value="Save" class="btn-add">
+          <input type="button" value="Cancel" class="btn-add" id="cancel" onclick="test()">
         </div>
+      </div>
       </form>
   </body>
 
