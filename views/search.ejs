@@ -40,17 +40,24 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+        <% if(result) { %>
         <div>
             <h2>Blog Details</h2>
                 <div>
                     <center>
                         <table border="2" id="table">
                             <thead>
+                                <th>BlogName</th>
                                 <th>BlogTitle</th>
                                 <th>BlogCategory</th>
                                 <th>Description</th>
+                                <th>PublishDate</th>
                             </thead>
                                 <tr>
+                                    <td>
+                                        <%= result.Name %>
+                                    </td>
                                     <td>
                                         <%= result.Title %>
                                     </td>
@@ -60,9 +67,17 @@
                                     <td>
                                         <%= result.Description %>
                                     </td>
+                                    <td>
+                                        <%= result.PublishDate %>
+                                    </td>
                                 </tr>
                         </table>
                     </center>
+                </div>
+        <% } else {  %>
+        <div>
+            <p>No result Found</p>
         </div>
+        <% } %>
 </body>
 </html>

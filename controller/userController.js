@@ -42,14 +42,16 @@ exports.useredit = (req, res, next) => {
         })
 }
 
-exports.search = async(req,res,next) => {
+exports.search = (req,res,next) => {
     const searchTitle = req.body.title
     console.log(searchTitle)
-     await userBlog.find()
+     userBlog.find()
       .select()
       .where({Title: searchTitle})
       .exec()
      .then(result => {
-        console.log(result)
+        const temp = result.pop()
+        //console.log(temp)
+        res.render('search',{result: temp})
      })
 }

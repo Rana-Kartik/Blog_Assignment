@@ -44,23 +44,23 @@
         <div class="add-blog-name">
           <label for="formGroupExampleInput" class="form-label">Blog Name</label>
           <input type="text" class="form-control" name="Name" id="formGroupExampleInput"
-            placeholder="Enter the Blog name" required>
+            placeholder="Enter the Blog name" pattern="[A-Za-z]+" required >
         </div>
         <div class="add-blog-title">
           <label for="formGroupExampleInput2" class="form-label">Blog Title</label>
-          <input type="text" class="form-control" name="Title" id="formGroupExampleInput2"
+          <input type="text" class="form-control" name="Title" pattern="[A-Za-z]+" id="formGroupExampleInput2"
             placeholder="Enter the Blog title" required>
         </div>
         <div class="add-blog-category">
           <select class="form-select" name="Category" aria-label="Default select example" id="category" required>
-            <option selected>Select Category</option>
-            <option value="Electronic" selected>Electronic</option>
+            <option >Select Category</option>
+            <option value="Electronic" selected >Electronic</option>
             <option value="Grossery">Grossery</option>
             <option value="Food">Food</option>
           </select>
         </div>
         <div class="add-blog-description">
-            <textarea id="mytextarea" name="Description">Hello, World!</textarea>
+            <textarea id="mytextarea" name="Description"></textarea>
             
         </div>
         <div class="add-blog-date">
@@ -69,7 +69,7 @@
         </div>
         <div class="add-blog-image">
           <label for="image1" class="form-label">SelectBlogImage</label>
-          <input type="file" name="Image" id="image1" required>
+          <input type="file" name="Image" id="image1" accept=".jpeg,.avif" required>
         </div>
         <br>
         <br>

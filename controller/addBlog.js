@@ -1,6 +1,8 @@
 const AddBlog = require('../models/addBlog')
 const AddBlogs = require('../models/addBlog')
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { default: slugify } = require('slugify');
+const { $where } = require('../models/addBlog');
 const cloudinary = require('cloudinary').v2
 
 //upload the image in the cloudinary
@@ -21,6 +23,7 @@ exports.create = (req, res) => {
             _id: new mongoose.Types.ObjectId(),
             Name: req.body.Name,
             Title: req.body.Title,
+            Slug:slugify(req.body.Title, '-'),
             Category: req.body.Category,
             Description: req.body.Description,
             PublishDate: req.body.PublishDate,
@@ -60,9 +63,17 @@ exports.allBlog = (req, res, next) => {
 exports.del = (req, res) => {
     const blogid = req.params.bid
     AddBlog.deleteOne({ _id: blogid })
-        .then(
-            console.log('blog deleted')
-        )
+        .then({
+            success : function(){
+                  alert('you have to deleted')
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(500).json({
+                message: 'blog is not deleted'
+            })
+        })
 }
 
 //creating the method of update the data
@@ -92,9 +103,7 @@ exports.editblog = (req,res) =>{
                      Title : req.body.Title,
                      Category : req.body.Category,
                      Description: req.body.Description,
-                     
-
-    };
+                };
     console.log(update)
     AddBlog.findOneAndUpdate(id, update)
     .catch(err => {

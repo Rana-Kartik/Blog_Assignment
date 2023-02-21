@@ -9,6 +9,9 @@ const blogSchema = mongoose.Schema({
     Title: {
         type: String, require: true
     },
+    Slug:{
+        type:String
+    },
     Category: {
         type: String, require: true
     },

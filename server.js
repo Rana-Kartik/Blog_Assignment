@@ -4,10 +4,19 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const fileupload = require('express-fileupload')
-
 const blogRoutes = require('./routes/addBlog')
 const userRoutes = require('./routes/userRoute')
 const categoryRoutes = require('./routes/addCategory')
+
+// "use strict"
+// exports.__esModule = true
+// var slugify_1 = require("slugify")
+// var url = 'This is a car ^:/'
+// var slug = slugify_1['default'](url, {
+//     replacement: '-',
+//     lower: true
+// })
+// console.log(slug)
 
 //Set the credentials of mongodb database
 mongoose.set('strictQuery', true);
@@ -19,7 +28,7 @@ mongoose.connect('mongodb://ranaka:eKc3b9iA4Iid0WiA7GxxigYK@15.206.7.200:28017/r
         console.log(err)
     })
 
-//use the middlwere for image insert
+//use the middlwere for image insert    
 app.use(fileupload({
     useTempFiles: true
 }))
