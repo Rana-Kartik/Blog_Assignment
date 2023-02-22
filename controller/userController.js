@@ -9,31 +9,29 @@ exports.login = (req, res) => {
         const password = req.body.Password
         console.log(data)
         //res.render('Adminindex')
-        if(data.Username === username && data.Password === password)
-        {
-           res.render('Adminindex')
+        if (data.Username === username && data.Password === password) {
+            res.render('Adminindex')
         }
-        else
-        {
+        else {
             res.status(200).json({
                 message: 'invalid username and password'
             })
         }
     })
 }
-exports.userdata = (req,res) => {
-            userBlog.find()
-            .select()
-            .exec()
-            .then(docs => {
-                  res.render('user',{docs:docs})
-            })
+exports.userdata = (req, res) => {
+    userBlog.find()
+        .select()
+        .exec()
+        .then(docs => {
+            res.render('user', { docs: docs })
+        })
 }
 exports.useredit = (req, res, next) => {
     const uid = req.params.uid
     console.log(uid)
     userBlog.findById(uid)
-        .select('Title Category Description PublishDate' )
+        .select('Title Category Description PublishDate')
         .exec()
         .then(result => {
             console.log(result);
@@ -46,16 +44,16 @@ exports.useredit = (req, res, next) => {
         })
 }
 
-exports.search = (req,res,next) => {
+exports.search = (req, res, next) => {
     const searchTitle = req.body.title
     console.log(searchTitle)
-     userBlog.find()
-      .select()
-      .where({Title: searchTitle})
-      .exec()
-     .then(result => {
-        const temp = result.pop()
-        //console.log(temp)
-        res.render('search',{result: temp})
-     })
+    userBlog.find()
+        .select()
+        .where({ Title: searchTitle })
+        .exec()
+        .then(result => {
+            const temp = result.pop()
+            //console.log(temp)
+            res.render('search', { result: temp })
+        })
 }

@@ -8,15 +8,6 @@ const blogRoutes = require('./routes/addBlog')
 const userRoutes = require('./routes/userRoute')
 const categoryRoutes = require('./routes/addCategory')
 
-// "use strict"
-// exports.__esModule = true
-// var slugify_1 = require("slugify")
-// var url = 'This is a car ^:/'
-// var slug = slugify_1['default'](url, {
-//     replacement: '-',
-//     lower: true
-// })
-// console.log(slug)
 
 //Set the credentials of mongodb database
 mongoose.set('strictQuery', true);

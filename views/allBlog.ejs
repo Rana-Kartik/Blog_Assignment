@@ -52,8 +52,8 @@
                                 <th>BlogTitle</th>
                                 <th>BlogCategory</th>
                                 <th>Description</th>
-                                <!-- <th>PublishDate</th> -->
-                                <!-- <th>Image</th> -->
+                                <th>PublishDate</th>
+                                <th>Image</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </thead>
@@ -72,10 +72,16 @@
                                     <td>
                                         <%= tt.Description %>
                                     </td>
+                                    <td>
+                                        <%= tt.PublishDate %>
+                                    </td>
+                                    <td>
+                                        <img src="<%= tt.Image %>" height="100" width="100" alt="" srcset="">
+                                    </td>
 
-                                    <td><a href="/Blog/edit/<%= tt.id%>"  class="btn btn-primary">
+                                    <td><a href="/Blog/edit/<%= tt.id%>" class="btn btn-warning">
                                             Edit</a></td>
-                                    <td> <a href="/Blog/delete/<%= tt.id%>" class="btn btn-success">
+                                    <td> <a href="#" class="btn btn-danger deletepost" data-id="<%= tt.id%>">
                                             Delete</a></td>
                                 </tr>
                                 <% } %>
@@ -83,9 +89,35 @@
                     </center>
                     <% } else { %>
                         <div> No Blog available </div>
-                    <% } %>
-               
-        </div>
+                        <% } %>
+
+                </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('.deletepost').click(function () {
+            var postid = $(this).attr('data-id')
+            var obj = $(this)
+
+            $.ajax({
+                url: "/Blog/deletepost",
+                type: "post",
+                data: { id: postid },
+                //success:alert('not getting')
+                success: function (response) {
+                    if (response.success == true) {
+                        $(obj).parent().parent().remove()
+                        alert(response.msg)
+                    }
+                    else {
+                        alert(response.msg)
+                    }
+                }
+            })
+        })
+    })
+</script>
 
 </html>

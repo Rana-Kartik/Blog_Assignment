@@ -1,77 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>User Panel</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/user/assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/user/css/styles.css" rel="stylesheet" />
-        <style>
-            #table {
-                background-color: lightblue;
-                text-align: center;
-                table-layout: auto;
-                border-color: brown;
-                border: 4px solid;
-                column-gap: 3ch;
-                column-width: auto;
-            }
-    
-            h2 {
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">User Home Page</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-     
-        <div>
-          
-                <div>
-                        <table border="2" id="table">
-                            <thead>
-                                <th>BlogName</th>
-                            </thead>
-                        
-                            <% for(let tt of docs) { %>
-                                <tr>
 
-                                    <td>
-                                        <%= tt.Name %>
-                                    </td>
-                                    <td><a href="/login/useredit/<%= tt.id%>" class="btn btn-primary">
-                                        Click</a></td>
-                                </tr>
-                                <% } %>
-                        </table>
-                </div>
-                    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>User Panel</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/user/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/user/css/styles.css" rel="stylesheet" />
+    <style>
+        #table {
+            background-color: lightblue;
+            text-align: center;
+            table-layout: auto;
+            border-color: brown;
+            border: 4px solid;
+            column-gap: 3ch;
+            column-width: auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">User Home Page</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+    <div>
+
         <div>
-            <center>
-                <h2>Title wise search</h2>
+            <table border="2" id="table">
+                <thead>
+                    <th>BlogName</th>
+                    <th>BlogImage</th>
+                </thead>
+
+                <% for(let tt of docs) { %>
+                    <tr>
+
+                        <td>
+                            <%= tt.Name %>
+                        </td>
+                        <td>
+                            <img src="<%= tt.Image %>" height="100" width="100">
+                        </td>
+                        <td><a href="/login/useredit/<%= tt.id%>" class="btn btn-primary">
+                                Click</a></td>
+                    </tr>
+                    <% } %>
+            </table>
+        </div>
+
+    </div>
+    <div>
+        <center>
+            <h2>Title wise search</h2>
             <form method="post" action="/login/search">
-                <input type="text" name="title" placeholder="Enter the data" required pattern="[A-Za-z]+">
+                <input type="text" name="title" placeholder="Enter the data" required pattern="[A-Za-z ]+">
                 <input type="submit" value="search">
             </form>
         </center>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/user/js/scripts.js"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/user/js/scripts.js"></script>
+</body>
+
 </html>

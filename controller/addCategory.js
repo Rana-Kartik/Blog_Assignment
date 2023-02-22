@@ -63,30 +63,30 @@ exports.del = (req, res) => {
         )
 }
 
-exports.edit = (req,res) => {
+exports.edit = (req, res) => {
     const cid = req.params.eid
-    AddCatogorys.findById({_id : cid})
-    .then((Course) => {
-        const viewsData = {
-            edit: true,
-            Course,
-            pageTitle: 'Edit Course'
-        }
-        res.render('editCategory', viewsData)
-    }).catch((error) => {
-        console.log(error)
-        res.status(500).json({
-            message : 'post is not Edited' 
+    AddCatogorys.findById({ _id: cid })
+        .then((Course) => {
+            const viewsData = {
+                edit: true,
+                Course,
+                pageTitle: 'Edit Course'
+            }
+            res.render('editCategory', viewsData)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500).json({
+                message: 'post is not Edited'
+            })
         })
-    })
 }
 
-exports.editpost = (req,res) => {
+exports.editpost = (req, res) => {
     const id = { eid: req.params.eeid };
     const update = { CategoryName: req.body.CategoryName };
-    
+
     AddCategory.findOneAndUpdate(id, update)
-    .catch(err => {
-        console.log(err)
-    })
+        .catch(err => {
+            console.log(err)
+        })
 }

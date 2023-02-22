@@ -23,7 +23,7 @@ exports.create = (req, res) => {
             _id: new mongoose.Types.ObjectId(),
             Name: req.body.Name,
             Title: req.body.Title,
-            Slug:slugify(req.body.Title, '-'),
+            Slug: slugify(req.body.Title, '-'),
             Category: req.body.Category,
             Description: req.body.Description,
             PublishDate: req.body.PublishDate,
@@ -60,56 +60,45 @@ exports.allBlog = (req, res, next) => {
 }
 
 //creating the method of delete the data
-exports.del = (req, res) => {
-    const blogid = req.params.bid
-    AddBlog.deleteOne({ _id: blogid })
-        .then(
-            res.send("alert('are you sure')")
-        )
-        .catch((error) => {
-            console.log(error)
-            res.status(500).json({
-                message: 'blog is not deleted'
-            })
-        })
+exports.del = async (req, res) => {
+    try {
+        await AddBlog.deleteOne({ _id: req.body.id })
+        res.status(200).send({ success: true, msg: 'post deleted successfully' })
+    }
+    catch (error) {
+        res.status(400).send({ success: false, msg: error.message })
+    }
+
 }
 
 //creating the method of update the data
-exports.edit = (req, res) => {
-    const editid = req.params.eid
+exports.edit = async (req, res) => {
 
-    AddBlogs.findById({_id : editid})
-        .then((Course) => {
-            const viewsData = {
-                edit: true,
-                Course,
-                pageTitle: 'Edit Course'
-            }
-            res.render('editBlog', viewsData)
-        }).catch((error) => {
-            console.log(error)
-            res.status(500).json({
-                message: 'post is not Edited'
-            })
-        })
+    try {
+        var postData = await AddBlog.findOne({ _id: req.params.eid })
+        res.render('editBlog', { post: postData })
+    }
+    catch (error) {
+        console.log(error.message)
+    }
+
 }
 
 
-exports.editblog = (req,res) =>{
-    const id = { eid: req.params.blogid };
-    const update = { Name: req.body.Name,
-                     Title : req.body.Title,
-                     Category : req.body.Category,
-                     Description: req.body.Description,
-                };
-    console.log(update)
-    AddBlog.findOneAndUpdate(id, update)
-    .then(
-       res.status(200).json({
-        message:'blog updated'
-       })
-    )
-    .catch(err => {
-        console.log(err)
-    })
+exports.editblog = async (req, res) => {
+    try {
+        await AddBlog.findByIdAndUpdate({ _id: req.body.eid }, {
+            $set: {
+                Name: req.body.Name,
+                Title: req.body.Title,
+                Category: req.body.Category,
+                Description: req.body.Description,
+            }
+        })
+        res.status(200).send({ success: true, msg: 'post updated successfully' })
+    }
+    catch (error) {
+        res.status(400).send({ success: false, msg: error.message })
+    }
+
 }
