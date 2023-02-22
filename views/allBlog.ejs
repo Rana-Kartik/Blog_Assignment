@@ -6,11 +6,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script>
-        function test() {
-            alert('You have to deleted')
-        }
-    </script>
     <style>
         #table {
             background-color: lightblue;
@@ -78,7 +73,7 @@
                                         <%= tt.Description %>
                                     </td>
 
-                                    <td><a href="/Blog/edit/<%= tt.id%>" class="btn btn-primary">
+                                    <td><a href="/Blog/edit/<%= tt.id%>"  class="btn btn-primary">
                                             Edit</a></td>
                                     <td> <a href="/Blog/delete/<%= tt.id%>" class="btn btn-success">
                                             Delete</a></td>

@@ -15,15 +15,19 @@ exports.login = (req, res) => {
         }
         else
         {
+            res.status(200).json({
+                message: 'invalid username and password'
+            })
+        }
+    })
+}
+exports.userdata = (req,res) => {
             userBlog.find()
             .select()
             .exec()
             .then(docs => {
                   res.render('user',{docs:docs})
             })
-           // res.render('user')
-        }
-    })
 }
 exports.useredit = (req, res, next) => {
     const uid = req.params.uid

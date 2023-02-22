@@ -7,5 +7,6 @@ const userController = require('../controller/userController')
 userRouter.post('/l', userController.login)
 userRouter.get('/useredit/:uid' , userController.useredit)
 userRouter.post('/search' , userController.search)
+userRouter.get('/userhome' , userController.userdata)
 
 module.exports = userRouter

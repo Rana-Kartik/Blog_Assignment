@@ -63,11 +63,9 @@ exports.allBlog = (req, res, next) => {
 exports.del = (req, res) => {
     const blogid = req.params.bid
     AddBlog.deleteOne({ _id: blogid })
-        .then({
-            success : function(){
-                  alert('you have to deleted')
-            }
-        })
+        .then(
+            res.send("alert('are you sure')")
+        )
         .catch((error) => {
             console.log(error)
             res.status(500).json({
@@ -106,6 +104,11 @@ exports.editblog = (req,res) =>{
                 };
     console.log(update)
     AddBlog.findOneAndUpdate(id, update)
+    .then(
+       res.status(200).json({
+        message:'blog updated'
+       })
+    )
     .catch(err => {
         console.log(err)
     })
